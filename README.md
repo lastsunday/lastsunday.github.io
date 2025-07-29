@@ -10,31 +10,33 @@
 |Language|<ul><li>rust</li><li>java</li></ul>||
 |Framework|<ul><li>esp32</li><li>nodejs</li></ul>||
 
-
 ## zsh install
 
-https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
+<https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH>
 
 ``` shell
 sudo apt install zsh
 chsh -s $(which zsh)
 ```
-https://github.com/ohmyzsh/ohmyzsh
+
+<https://github.com/ohmyzsh/ohmyzsh>
 
 ``` shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-https://github.com/romkatv/powerlevel10k
-	Install the recommended font. Optional but highly recommended.
-	Install Powerlevel10k itself.
-	Restart Zsh with exec zsh.
-	Type p10k configure if the configuration wizard doesn't start automatically.
+<https://github.com/romkatv/powerlevel10k>
+ Install the recommended font. Optional but highly recommended.
+ Install Powerlevel10k itself.
+ Restart Zsh with exec zsh.
+ Type p10k configure if the configuration wizard doesn't start automatically.
 
 ## lazyvim install
-https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2
+
+<https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2>
 
 The Releases page provides pre-built binaries for Linux systems.
+
 ``` shell
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
@@ -42,12 +44,12 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ```
 
 Then add this to your shell config (~/.bashrc, ~/.zshrc, ...):
+
 ``` shell
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 ```
 
-
-https://www.lazyvim.org/
+<https://www.lazyvim.org/>
 
 ``` shell
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
@@ -62,9 +64,9 @@ sudo apt-get install ripgrep
 sudo apt install fd-find
 ```
 
-https://www.lazyvim.org/installation
-	Install the LazyVim Starter or Clone Your Repo
-	
+<https://www.lazyvim.org/installation>
+ Install the LazyVim Starter or Clone Your Repo
+
 ## git
 
 ``` shell
@@ -77,14 +79,14 @@ git config --global user.email johndoe@example.com
 ``` shell
 sudo apt-get install gnupg
 ```
-	
+
 ## wsl proxy by clash verge
 
 配置Clash
-	找到General > Allow LAN，打开开关。
+ 找到General > Allow LAN，打开开关。
 
 配置防火墙
-	打开控制面板，找到系统和安全 > Windows Defender 防火墙 > 允许应用通过 Windows 防火墙，勾选上所有Clash相关的应用，包括但不限于Clash for Windows、clash-win64等。
+ 打开控制面板，找到系统和安全 > Windows Defender 防火墙 > 允许应用通过 Windows 防火墙，勾选上所有Clash相关的应用，包括但不限于Clash for Windows、clash-win64等。
 
 ``` shell
 hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
@@ -96,14 +98,17 @@ export all_proxy="socks5://${hostip}:7897"
 ## project
 
 ### nodejs
-https://github.com/Schniz/fnm
+
+<https://github.com/Schniz/fnm>
+
 ```shell
 curl -fsSL https://fnm.vercel.app/install | bash
 ```
 
-
 ### rust
-https://www.rust-lang.org/tools/install
+
+<https://www.rust-lang.org/tools/install>
+
 ``` shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
@@ -115,8 +120,11 @@ sudo apt-get install openjdk-21-jdk
 ```
 
 ### esp32
-https://docs.espressif.com/projects/esp-idf/zh_CN/stable/esp32/get-started/linux-macos-setup.html
+
+<https://docs.espressif.com/projects/esp-idf/zh_CN/stable/esp32/get-started/linux-macos-setup.html>
+
 1. setup
+
 ``` shell
 sudo apt-get install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
 python3 --version
@@ -129,7 +137,9 @@ cd ~/esp/esp-idf
 ./install.sh esp32 esp32s3
 
 ```
+
 2. run in project
+
 ```shell
 . $HOME/esp/esp-idf/export.sh
 idf.py set-target esp32s3
@@ -139,9 +149,10 @@ idf.py -p PORT flash
 ```
 
 3. remark wsl2 get PORT
-https://developer.espressif.com/blog/espressif-devkits-with-wsl2/
+<https://developer.espressif.com/blog/espressif-devkits-with-wsl2/>
 
 in the host terminal
+
 ``` shell
 winget install usbipd
 usbipd list
@@ -150,6 +161,7 @@ usbipd attach --wsl --busid 3-4
 ```
 
 in wsl terminal
+
 ``` shell
 ls /dev/tty*
 sudo chmod 777 /dev/ttyUSB0
@@ -158,19 +170,27 @@ sudo chmod 777 /dev/ttyUSB0
 ## wsl
 
 ### 端口转发
+
+> 如果访问失败，则需要先将端口转发删除，然后再重新添加端口转发
+
 1. 配置防火墙入站规则
 打开windows的防火墙高级设置，添加入站端口，比如：3000
 1. 以管理员权限打开PowerShell
 1. 查看当前的转发设置
+
 ``` shell
 netsh interface portproxy show all
 ```
+
 1. 添加新的转发
+
 ``` shell
 netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=3000 connectaddress=localhost connectport=3000
 netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=8080 connectaddress=localhost connectport=8080
 ```
+
 1.删除不需要的转发
+
 ```shell
 netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=3000
 netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=8080
