@@ -78,6 +78,11 @@ git config --global user.email johndoe@example.com
 
 ``` shell
 sudo apt-get install gnupg
+gpg --import [your gpg file].asc
+gpg --list-secret-keys --keyid-format=long
+git config --global user.signingkey [GPG 密钥 ID]
+git config --global commit.gpgsign true
+git config --global tag.gpgSign true
 ```
 
 ## wsl proxy by clash verge
