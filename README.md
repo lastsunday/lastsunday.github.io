@@ -85,6 +85,14 @@ git config --global commit.gpgsign true
 git config --global tag.gpgSign true
 ```
 
+> gpg: signing failed: Inappropriate ioctl for device
+
+Add the following line to your shell's profile configuration file (e.g., ~/.bash_profile, ~/.zshrc):
+
+```
+export GPG_TTY=$(tty)
+```
+
 ## wsl proxy by clash verge
 
 配置Clash
