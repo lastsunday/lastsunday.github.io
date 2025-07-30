@@ -31,6 +31,23 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
  Restart Zsh with exec zsh.
  Type p10k configure if the configuration wizard doesn't start automatically.
 
+<https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md>
+
+1. Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
+
+```shell
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+
+2. Add the plugin to the list of plugins for Oh My Zsh to load (inside ~/.zshrc):
+
+```
+plugins=( 
+    # other plugins...
+    zsh-autosuggestions
+)
+```
+
 ## lazyvim install
 
 <https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2>
