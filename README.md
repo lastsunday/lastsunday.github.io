@@ -226,4 +226,28 @@ netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=3000
 netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=8080
 ```
 
+### CUDA
+
+<https://learn.microsoft.com/zh-cn/windows/ai/directml/gpu-cuda-in-wsl>
+
+1.1. NVIDIA Compute Software Support on WSL 2
+
+    NVIDIA Windows Driver
+    CUDA Toolkit and CUDA Developer Tools
+
+Write Into ~/.bashrc
+
+```
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+```
+
+#### 显卡兼容性(CUDA)列表
+
+> <https://github.com/huggingface/candle/issues/2041>
+
+<https://developer.nvidia.com/cuda-gpus>
+
+|6.1|GeForce GTX 1080|
+
 </details>
